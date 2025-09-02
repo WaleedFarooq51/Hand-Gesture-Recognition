@@ -82,7 +82,7 @@ git clone <your-repo-url>
 cd <repo-name>
 ```
 
-Open `detection.ipynb' notebook.
+Open `gesture_detection.ipynb` notebook.
 
 ### 2) Prepare dataset & label map
 - Put images into `workspace/images/train` and `workspace/images/test`.
@@ -104,9 +104,9 @@ python model_main_tf2.py --model_dir=models/my_ssd_mobnet --pipeline_config_path
 
 ### 5) Inferecne
 
-- If you wish to carry out real-time inference on your own test images without training on your own dataset, load the checkpoint from `workspace/models/my_ssd_mobnet/' .
+- If you wish to carry out real-time inference on your own test images without training on your own dataset, load the checkpoint from `workspace/models/my_ssd_mobnet/` .
 
-- All the trained checkpoints will be stored in `workspace/models/my_ssd_mobnet/'.
+- All the trained checkpoints will be stored in `workspace/models/my_ssd_mobnet/`.
 
 ---
 
