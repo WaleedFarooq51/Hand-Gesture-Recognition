@@ -74,9 +74,7 @@ MobileNetV2 + SSD (pretrained on COCO 2017, input 320×320). Transfer learning f
 
 ---
 
-## 🚀 Quickstart — Train + Inference (Colab / Local)
-
-> **Recommend:** Use Google Colab with GPU runtime for training (`Runtime` → `Change runtime type` → GPU).
+## 🚀 Quickstart 
 
 ### 1) Clone repo
 ```bash
@@ -84,45 +82,25 @@ git clone <your-repo-url>
 cd <repo-name>
 ```
 
+Open `detection.ipynb' notebook.
+
 ### 2) Prepare dataset & label map
-- Put images into `data/images/train` and `data/images/test`.
+- Put images into `workspace/images/train` and `workspace/images/test`.
+- Create a `label_map.pbtxt`.
 - Ensure your `label_map.pbtxt` lists all classes (A–Z and custom gestures).
 
-### 3) Generate TFRecords
-Example (replace arguments with your script’s CLI):
+### 3) Install required libraries & TF Object detection API
+
+### 4) Generate TFRecords
 ```bash
-python scripts/generate_tfrecord.py --annotations_dir data/annotations --images_dir data/images/train --output train.record --label_map label_map.pbtxt
-python scripts/generate_tfrecord.py --annotations_dir data/annotations --images_dir data/images/test --output test.record --label_map label_map.pbtxt
+python scripts/generate_tfrecord.py -x "path to train images -l "path to label_map.pbtxt -o "path to store tf_records"
+python scripts/generate_tfrecord.py -x "path to test images -l "path to label_map.pbtxt -o "path to store tf_records"
 ```
 
-### 4) Configure `pipeline.config`
-- Set `fine_tune_checkpoint` to the path of the downloaded MobileNet SSD V2 checkpoint.
-- Set `train_input_reader` / `eval_input_reader` to your `train.record` / `test.record`.
-- Adjust `batch_size`, `num_classes`, learning rate schedule, and `num_steps` as needed.
-
-### 5) Train (TF OD API example)
+### 4) Training the model
 ```bash
-# TF2 OD API (example; path to model_main_tf2.py may vary)
-python /path/to/models/research/object_detection/model_main_tf2.py     --model_dir=models/my_mobilenet_ssd_v2     --pipeline_config_path=pipeline.config
+python model_main_tf2.py --model_dir=models/my_ssd_mobnet --pipeline_config_path=models/my_ssd_mobnet/pipeline.config
 ```
-
-### 6) Export trained model (SavedModel)
-```bash
-python /path/to/models/research/object_detection/exporter_main_v2.py     --input_type image_tensor     --pipeline_config_path pipeline.config     --trained_checkpoint_dir models/my_mobilenet_ssd_v2     --output_directory models/exported/saved_model
-```
-
-### 7) Run real-time inference (webcam)
-```bash
-python scripts/infer_webcam.py --model_dir=models/exported/saved_model --label_map label_map.pbtxt
-```
-
-`infer_webcam.py` should:
-- Load the exported `saved_model` with `tf.saved_model.load()`,
-- Capture frames from OpenCV (`cv2.VideoCapture(0)`),
-- Preprocess frames to model input (resize to 320×320, normalize if required),
-- Run inference and apply non-max suppression / draw boxes,
-- Display label + confidence and optionally save text output to a log file.
-
 ---
 
 
