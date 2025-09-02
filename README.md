@@ -68,7 +68,9 @@ MobileNetV2 + SSD (pretrained on COCO 2017, input 320×320). Transfer learning f
 - Two types of inference were run: (1) image-based testing on held-out images, and (2) **real-time webcam inference**.
 
 - The model returns bounding boxes with class labels and confidence scores.
-  
+
+![Sample Detection](./results/img1.png)
+
 **Limitations observed:**
 - Uncontrolled backgrounds and low-light conditions reduce accuracy.
 - Varied skin tones, clothing, partial occlusions, and face presence can confuse the detector.
