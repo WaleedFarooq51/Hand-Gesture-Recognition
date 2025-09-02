@@ -69,7 +69,7 @@ MobileNetV2 + SSD (pretrained on COCO 2017, input 320×320). Transfer learning f
 
 - The model returns bounding boxes with class labels and confidence scores.
 
-![Sample Detection](./results/img1.png)
+![Sample Detection](./results/img1.png) ![Sample Detection](./results/img2.png) ![Sample Detection](./results/img3.png)
 
 **Limitations observed:**
 - Uncontrolled backgrounds and low-light conditions reduce accuracy.
