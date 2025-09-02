@@ -16,23 +16,19 @@ This repository implements a **real-time sign-language recognition system** usin
 
 ```
 .
-├─ data/
+├─ workspace/
 │  ├─ images/
 │  │  ├─ train/                # training images
 │  │  └─ test/                 # testing images
-│  ├─ annotations/             # LabelMe JSON / XML annotations
-│  ├─ train.record             # TFRecord for training
-│  └─ test.record              # TFRecord for evaluation
-├─ models/                     # model checkpoints and exported models
+│  ├─ annotations/            
+│  │  ├─ label_map.pbtxt       # LabelMe JSON / XML annotations
+│  │  ├─ train.record          # TFRecord for training
+│  │  └─ test.record           # TFRecord for evaluation
+│  ├─ models/                  # trained model checkpoints
+│  │  ├─ my_ssd_mobnet
+│  ├─ pre-trained models       # pre-trained SSD-MobNet model checkpoints    
 ├─ scripts/
 │  ├─ generate_tfrecord.py     # convert annotations -> TFRecord
-│  ├─ train.py                 # wrapper to launch TF OD training
-│  ├─ export_model.py          # export saved_model / frozen graph
-│  └─ infer_webcam.py          # real-time inference script using OpenCV
-├─ pipeline.config             # TF OD pipeline config (tuned for MobileNet SSD V2)
-├─ label_map.pbtxt             # label map (A-Z + custom gestures)
-├─ notebooks/
-│  └─ hand_gesture_detection_colab.ipynb   # recommended Colab notebook
 ├─ README.md
 └─ requirements.txt
 ```
