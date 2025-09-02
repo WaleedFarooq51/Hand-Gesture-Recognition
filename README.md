@@ -12,7 +12,7 @@ This repository implements a **real-time sign-language recognition system** usin
   
 ---
 
-## 📁 Suggested Repository Structure
+## 📁 Repository Structure
 
 ```
 .
