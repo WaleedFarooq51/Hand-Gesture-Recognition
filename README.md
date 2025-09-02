@@ -101,6 +101,13 @@ python scripts/generate_tfrecord.py -x "path to test images -l "path to label_ma
 ```bash
 python model_main_tf2.py --model_dir=models/my_ssd_mobnet --pipeline_config_path=models/my_ssd_mobnet/pipeline.config
 ```
+
+### 5) Inferecne
+
+- If you wish to carry out real-time inference on your own test images without training on your own dataset, load the checkpoint from `workspace/models/my_ssd_mobnet/' .
+
+- All the trained checkpoints will be stored in `workspace/models/my_ssd_mobnet/'.
+
 ---
 
 
